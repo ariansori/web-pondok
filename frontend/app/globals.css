@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ── Brand Colors ── */
+    --color-green-primary: #169645;
+    --color-green-dark: #0D5C2B;
+    --color-green-light: #1DB854;
+    --color-green-50: #F0FFF4;
+    --color-green-100: #C6F6D5;
+
+    --color-gold: #F4B41A;
+    --color-gold-dark: #D4970E;
+    --color-gold-light: #FBD97C;
+
+    --color-off-white: #F8F9FA;
+    --color-charcoal: #1A1A1A;
+    --color-charcoal-800: #2D2D2D;
+    --color-charcoal-600: #4A4A4A;
+    --color-charcoal-400: #777777;
+
+    /* ── Spacing / Sizing ── */
+    --navbar-height: 80px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  body {
+    font-family: var(--font-plus-jakarta), 'Inter', system-ui, sans-serif;
+    color: var(--color-charcoal);
+    background-color: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Utility Classes ── */
+@layer utilities {
+  .text-gradient-green {
+    background: linear-gradient(135deg, var(--color-green-primary), var(--color-green-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-pattern-islamic {
+    background-color: var(--color-green-dark);
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(244, 180, 26, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(29, 184, 84, 0.1) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+  }
+
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(22, 150, 69, 0.15);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    color: #1A1A1A;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(244, 180, 26, 0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(244, 180, 26, 0.5);
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .btn-green {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, var(--color-green-primary), var(--color-green-dark));
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(22, 150, 69, 0.3);
+  }
+
+  .btn-green:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(22, 150, 69, 0.45);
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-charcoal);
+  }
+
+  .section-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-charcoal-600);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  .badge-green {
+    display: inline-block;
+    padding: 0.25rem 0.875rem;
+    background: var(--color-green-50);
+    color: var(--color-green-dark);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: 1px solid var(--color-green-100);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .badge-gold {
+    display: inline-block;
+    padding: 0.25rem 0.875rem;
+    background: rgba(244, 180, 26, 0.12);
+    color: var(--color-gold-dark);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: 1px solid rgba(244, 180, 26, 0.25);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .divider-green {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-green-primary), var(--color-gold));
+    border-radius: 2px;
+  }
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-green-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-green-dark);
+}
+
+/* ── Hero Slider Animation ── */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-gold {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 180, 26, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(244, 180, 26, 0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlide 0.7s ease forwards;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Geometric Islamic Pattern (SVG background) ── */
+.hero-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='p' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cpolygon points='50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3Cpolygon points='50,15 85,32.5 85,67.5 50,85 15,67.5 15,32.5' fill='none' stroke='rgba(244,180,26,0.06)' stroke-width='1'/%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Navbar ── */
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Timeline ── */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-green-primary), var(--color-gold), var(--color-green-primary));
+  transform: translateX(-50%);
+}
+
+/* ── Campus Map Hotspot ── */
+.map-hotspot {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-hotspot:hover {
+  transform: scale(1.3);
+  background: var(--color-green-primary);
+}
+
+.map-hotspot::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold);
+  animation: pulse-gold 2s infinite;
+}
+
+/* ── Loading Skeleton ── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
