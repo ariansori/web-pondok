@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display, Amiri } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "../components/layout/Navbar";
-import { Footer } from "../components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -67,17 +65,10 @@ export default function RootLayout({
         <Toaster
           position="top-right"
           toastOptions={{
-            style: {
-              background: "#1A1A1A",
-              color: "#fff",
-              borderRadius: "12px",
-              fontSize: "14px",
-            },
+            style: { background: "#1A1A1A", color: "#fff", borderRadius: "12px", fontSize: "14px" },
           }}
         />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
